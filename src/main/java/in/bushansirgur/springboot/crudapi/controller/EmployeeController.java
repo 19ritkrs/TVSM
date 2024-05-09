@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import in.bushansirgur.springboot.crudapi.model.Employee;
 import in.bushansirgur.springboot.crudapi.service.EmployeeService;
@@ -18,6 +20,9 @@ import in.bushansirgur.springboot.crudapi.service.EmployeeService;
 @RestController
 @RequestMapping("/api")
 public class EmployeeController {
+	
+	private static final Logger logger = LoggerFactory.getLogger(EmployeeController.class);
+
 
 	@Autowired
 	private EmployeeService employeeService;
@@ -39,6 +44,7 @@ public class EmployeeController {
 		if(employeeObj == null) {
 			throw new RuntimeException("Employee not found for the Id:"+id);
 		}
+		logger.info("Retrive Emp Obj Details: {}", employeeObj);
 		return employeeObj;
 	}
 	
