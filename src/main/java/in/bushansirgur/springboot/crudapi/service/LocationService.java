@@ -23,6 +23,19 @@ public class LocationService {
         return locationRepository.findById(id)
                 .orElseThrow(() -> new LocationNotFoundException(id));
     }
+    
+    
+    public Location createLocation(Location location) throws IllegalArgumentException {
+        // Validate location data (optional)
+        if (location.getName() == null || location.getLatitude() < -90 || location.getLatitude() > 90 
+                || location.getLongitude() < -180 || location.getLongitude() > 180) {
+            throw new IllegalArgumentException("Invalid location data");
+        }
+        
+        return locationRepository.save(location);
+    }
+    
+    
 
     // Add methods for creating, updating, and deleting locations (omitted for brevity)
 }
