@@ -25,6 +25,13 @@ public class Employee {
 	private String department;
 	@Column
 	private Date dob;
+	
+	public Employee() {
+    }
+
+	public Employee(long l, String string, String string2) {
+		// TODO Auto-generated constructor stub
+	}
 
 	public Integer getId() {
 		return id;
